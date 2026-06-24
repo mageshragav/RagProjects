@@ -1,0 +1,47 @@
+[project]
+name = "rag-systems"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    # Web Framework
+    "fastapi>=0.110.0",
+    "uvicorn[standard]>=0.27.0",
+    # AI / LLM
+    "openai>=1.12.0",
+    "langchain>=0.1.0",
+    "langchain-openai>=0.0.5",
+    "langchain-community>=0.0.20",
+    # Vector Database
+    "qdrant-client>=1.7.0",
+    "langchain-qdrant>=0.1.0",
+    # Document Processing
+    "pypdf>=4.0.0",
+    "unstructured>=0.12.0",
+    "python-multipart>=0.0.9",
+    # Database
+    "tortoise-orm>=0.20.0",
+    "asyncpg>=0.29.0",
+    "aerich>=0.7.2",           # Migrations for Tortoise
+    # Utilities
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.2.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.26.0",
+    "tiktoken>=0.6.0",         # Token counting
+    "environs>=15.0.1",
+    "langchain-openrouter>=0.2.3",
+    "pip>=26.1.2",
+    "langchain-chroma>=1.1.0",
+    "protobuf==3.20.3",
+    "pdfplumber>=0.11.10",
+    "langchain-nvidia-ai-endpoints>=1.4.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "httpx>=0.26.0",
+]

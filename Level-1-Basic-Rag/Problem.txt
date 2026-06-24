@@ -1,0 +1,36 @@
+Project: Internal Knowledge Base Chatbot for Customer Support
+
+The Problem
+Support agents waste hours searching through scattered documentation 
+(PDFs, Confluence, Zendesk articles, Slack threads) to answer customer tickets. 
+A Basic RAG system centralizes and retrieves answers instantly.
+
+Production Architecture (Basic RAG)
+
+User Query → Query Embedding → Vector Search → Context Retrieval → LLM Response
+                ↑                    ↑                ↑
+           (OpenAI/Cohere)    (Pinecone/Qdrant)   (GPT-4o/Mistral)
+                                    ↑
+                            Document Ingestion
+                            (PDF, Markdown, HTML)
+
+Tech Stack (Production-Grade)
+Component	Choice	Why
+Orchestration	LangChain or LlamaIndex	Production pipelines + retries
+Embeddings	text-embedding-3-small (OpenAI) or all-MiniLM-L6-v2 (local)	Cost/quality balance
+Vector DB	Pinecone (cloud) or Qdrant (self-hosted)	Built for prod: scaling, monitoring
+LLM	GPT-4o-mini or Claude 3 Haiku	Cheap + fast for QA
+Ingestion	Unstructured.io or LlamaParser	Handles messy PDFs/tables
+API Layer	FastAPI + Docker	Easy deployment, async support
+Monitoring	LangSmith or Arize	Trace retrieval failures
+
+
+Learning RoadMap
+
+Phase 1: Foundations & Setup
+Phase 2: Document Ingestion Pipeline  
+Phase 3: Vector Search & Embeddings
+Phase 4: RAG Chain & LLM Integration
+Phase 5: FastAPI Layer
+Phase 6: Database Layer (PostgreSQL + Tortoise ORM)
+Phase 7: Production Features
